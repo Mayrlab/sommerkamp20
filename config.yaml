@@ -1,0 +1,23 @@
+tmp_dir:
+  "/scratch/fanslerm"
+
+metadataFile:
+  "metadata/E-MTAB-7391.sdrf.txt"
+
+gencodeBED:
+  "/data/mayrc/db/mm10/gencode.vM21.annotation.bed"
+
+chromSizes:
+  "/data/mayrc/db/mm10/mm10.chrom.sizes"
+
+utromeGTF:
+  "/data/mayrc/data/mca/gff/adult.utrome.e3.t200.f0.999.w500.gtf"
+
+utromeKDX:
+  "/data/mayrc/data/mca/kallisto/adult.utrome.e3.t200.f0.999.w500.kdx"
+
+utromeTx2Gene:
+  "/data/mayrc/data/mca/gff/adult.utrome.tx2gene.e3.t200.f0.999.w500.tsv"
+
+utromeMerge:
+  "/data/mayrc/data/mca/gff/adult.utrome.e3.t200.f0.999.w500.merge.tsv"
