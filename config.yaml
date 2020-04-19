@@ -21,3 +21,18 @@ utromeTx2Gene:
 
 utromeMerge:
   "/data/mayrc/data/mca/gff/adult.utrome.e3.t200.f0.999.w500.merge.tsv"
+
+atlasUTRAnnots:
+  "/data/mayrc/data/atlas-mm/utrs/utr-metadata.tsv"
+
+atlasGeneAnnots:
+  "/data/mayrc/data/atlas-mm/utrs/genes-utr-metadata-lengths.tsv"
+  
+hisat2:
+  "/data/mayrc/software/hisat2-2.1.0/hisat2"
+
+hisat2Index:
+  "/data/mayrc/achursov/sequencing/genomes/mouse/mm10/indexes/hisat2/mm10_hisat2"
+
+samtools:
+  "/home/fanslerm/software/miniconda3/bin/samtools"

@@ -1,0 +1,10 @@
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - r-base=3.6.1
+  - r-tidyverse=1.2.1
+  - bioconductor-summarizedexperiment=1.16.0
+  - bioconductor-tximport=1.12.3
+  - bioconductor-rhdf5=2.30.0
