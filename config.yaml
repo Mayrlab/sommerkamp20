@@ -4,29 +4,23 @@ tmp_dir:
 metadataFile:
   "metadata/E-MTAB-7391.sdrf.txt"
 
-gencodeBED:
-  "/data/mayrc/db/mm10/gencode.vM21.annotation.bed"
-
 chromSizes:
   "/data/mayrc/db/mm10/mm10.chrom.sizes"
 
 utromeGTF:
-  "/data/mayrc/data/mca/gff/adult.utrome.e3.t200.f0.999.w500.gtf"
+  "/data/mayrc/data/mca/gff/utrome.e30.t5.gc25.pas3.f0.9999.w500.gtf"
 
 utromeKDX:
-  "/data/mayrc/data/mca/kallisto/adult.utrome.e3.t200.f0.999.w500.kdx"
-
-utromeTx2Gene:
-  "/data/mayrc/data/mca/gff/adult.utrome.tx2gene.e3.t200.f0.999.w500.tsv"
+  "/data/mayrc/data/mca/kdx/utrome.e30.t5.gc25.pas3.f0.9999.w500.kdx"
 
 utromeMerge:
-  "/data/mayrc/data/mca/gff/adult.utrome.e3.t200.f0.999.w500.merge.tsv"
+  "/data/mayrc/data/mca/gff/utrome.e30.t5.gc25.pas3.f0.9999.w500.m200.tsv"
 
 atlasUTRAnnots:
-  "/data/mayrc/data/atlas-mm/utrs/utr-metadata.tsv"
+  "/data/mayrc/data/atlas-mm/utrs/utrome_txs_annotation.Rds"
 
 atlasGeneAnnots:
-  "/data/mayrc/data/atlas-mm/utrs/genes-utr-metadata-lengths.tsv"
+  "/data/mayrc/data/atlas-mm/data/utrs/utrome_genes_annotation.Rds"
   
 hisat2:
   "/data/mayrc/software/hisat2-2.1.0/hisat2"

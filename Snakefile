@@ -20,7 +20,7 @@ metadata['cell_type'] = metadata.sample_id.str.extract(r'(HSC|MPP[1234])')
 metadata['replicate'] = metadata.sample_id.str.extract(r'(.)$')
 
 metadata = metadata.pivot_table(index=["sample_id", "cell_type", "replicate"],
-                                columns="mate", values="url", aggfunc=lambda x: x[0])
+                                columns="mate", values="url", aggfunc='first')
 metadata = metadata.reset_index().set_index('sample_id')
 #print(metadata)
 
@@ -30,8 +30,7 @@ rule all:
         expand("qc/fastq/{sample_id}_{mate}_fastqc.html",
                sample_id=metadata.index.tolist(),
                mate=[1,2]),
-        "data/se/hspcs_bulk.txs.rds",
-        "data/se/hspcs_bulk.genes.rds"
+        "data/se/hspcs_bulk.txs.rds"
 
 rule download_fastq:
     output:
@@ -134,7 +133,7 @@ rule kallisto_to_se:
         "data/se/hspcs_bulk.txs.raw.rds"
     input:
         scriptFile="scripts/kallisto_to_se.R",
-        tx2gene=config['utromeTx2Gene'],
+        utromeMerge=config['utromeMerge'],
         tsvs=expand("data/kallisto/utrome_r2/{cell_type}{batch}/abundance.h5",
                     cell_type=["HSC", "MPP1", "MPP2", "MPP3", "MPP4"],
                     batch=["a", "b", "c", "d"])
@@ -147,14 +146,13 @@ rule kallisto_to_se:
         "envs/r36-tximport.yaml"
     shell:
         """
-        {input.scriptFile} {params.inputDir} {input.tx2gene} {output}
+        {input.scriptFile} {params.inputDir} {input.utromeMerge} {output}
         """
 
 rule collapse_overlaps:
     input:
         scriptFile="scripts/collapse_se_txs.R",
         se="data/se/hspcs_bulk.txs.raw.rds",
-        txMapFile=config['utromeMerge'],
         annotsFile=config['atlasUTRAnnots']
     output:
         "data/se/hspcs_bulk.txs.rds"
@@ -165,22 +163,22 @@ rule collapse_overlaps:
         "envs/r36-tximport.yaml"
     shell:
         """
-        {input.scriptFile} {input.se} {input.txMapFile} {input.annotsFile} {output}
+        {input.scriptFile} {input.se} {input.annotsFile} {output}
         """
 
-rule se_txs_to_genes:
-    input:
-        scriptFile="scripts/se_txs_to_genes.R",
-        se="data/se/hspcs_bulk.txs.rds",
-        annots=config['atlasGeneAnnots']
-    output:
-        "data/se/hspcs_bulk.genes.rds"
-    resources:
-        mem=2,
-        walltime=1
-    conda:
-        "envs/r36-tximport.yaml"
-    shell:
-        """
-        {input.scriptFile} {input.se} {input.annots} {output}
-        """
+# rule se_txs_to_genes:
+#     input:
+#         scriptFile="scripts/se_txs_to_genes.R",
+#         se="data/se/hspcs_bulk.txs.rds",
+#         annots=config['atlasGeneAnnots']
+#     output:
+#         "data/se/hspcs_bulk.genes.rds"
+#     resources:
+#         mem=2,
+#         walltime=1
+#     conda:
+#         "envs/r36-tximport.yaml"
+#     shell:
+#         """
+#         {input.scriptFile} {input.se} {input.annots} {output}
+#         """
