@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/254704072.svg)](https://zenodo.org/doi/10.5281/zenodo.10892209)
+
 ## Overview
 This repository provides a bioinformatics pipeline for processing the 3'-seq data of
 [*Sommerkamp et al., Cell Stem Cell, 2020*](https://dx.doi.org/10.1016%2Fj.stem.2020.03.003)
