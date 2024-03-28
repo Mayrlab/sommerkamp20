@@ -1,0 +1,7 @@
+*~
+.snakemake
+.Rhistory
+data
+logs/
+lsf.yaml
+qc/fastq/
